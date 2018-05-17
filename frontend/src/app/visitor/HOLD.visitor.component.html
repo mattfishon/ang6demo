@@ -1,0 +1,252 @@
+<div class="tran-content">
+  <div class="list-container">
+	<mat-grid-list cols="4" rowHeight="275px" gutterSize="50px">
+		  <mat-grid-tile>
+			    <mat-grid-tile-header>
+			     Visits
+			    </mat-grid-tile-header>
+			     <ngx-charts-pie-grid
+				  *ngIf="visible"
+				  minWidth="100"
+				  [scheme]="visitsPieColorScheme"
+				  [results]="visitsPieData">
+				</ngx-charts-pie-grid>
+		  </mat-grid-tile>
+		  <mat-grid-tile>
+			    <mat-grid-tile-header>
+			     Total Vists
+			    </mat-grid-tile-header>
+			    <div class="number-font">1,672</div>
+		  </mat-grid-tile>
+		  <mat-grid-tile>
+			    <mat-grid-tile-header>
+			     Visitors
+			    </mat-grid-tile-header>
+				     <ngx-charts-pie-grid
+					  *ngIf="visible"
+				      minWidth="100"					  
+					  [scheme]="visitorsPieColorScheme"
+ 					  [results]="visitsPieData">
+					</ngx-charts-pie-grid>
+		  </mat-grid-tile>
+		  <mat-grid-tile>
+			    <mat-grid-tile-header>
+			     Total Visitors
+			    </mat-grid-tile-header>
+			    <div class="number-font">1,042</div>
+		  </mat-grid-tile>
+	</mat-grid-list>
+  </div>
+  <div class="list-container">
+	<mat-grid-list cols="3" rowHeight="260px" gutterSize="50px">
+		  <mat-grid-tile>
+			    <mat-grid-tile-header>
+			     Visits
+			    </mat-grid-tile-header>
+			     <ngx-charts-advanced-pie-chart
+				  *ngIf="visible"
+				  [scheme]="visitsPieColorScheme"
+				  [results]="visitsPieData"
+				  legend="true">
+				</ngx-charts-advanced-pie-chart>
+		  </mat-grid-tile>
+		  <mat-grid-tile>
+			    <mat-grid-tile-header>
+			     Visitors
+			    </mat-grid-tile-header>
+					<ngx-charts-advanced-pie-chart
+					  *ngIf="visible"
+			          [view]="pieView"					  
+					  [scheme]="visitorsPieColorScheme"
+					  [results]="visitorsPieData"
+					  legend="true">
+					</ngx-charts-advanced-pie-chart>
+		  </mat-grid-tile>
+		  <mat-grid-tile>
+			    <mat-grid-tile-header>
+			     Walk-bys
+			    </mat-grid-tile-header>
+			    <div class="number-font">260</div>
+		  </mat-grid-tile>
+	</mat-grid-list>
+  </div>
+	<div class="pie-content">
+	    <mat-card class="pie-card2">
+		    <mat-card-header>
+				  <span>Visits</span>
+			</mat-card-header>
+	        <mat-card-content class="pie-card2-content" layout-fill>
+					<ngx-charts-advanced-pie-chart
+					  *ngIf="visible"
+					  [scheme]="visitsPieColorScheme"
+					  [results]="visitsPieData"
+					  legend="true">
+					</ngx-charts-advanced-pie-chart>
+			</mat-card-content>
+	    </mat-card>
+	    <mat-card class="pie-card2">
+		    <mat-card-header>
+				  Visitors
+			</mat-card-header>
+	        <mat-card-content class="pie-card2-content">
+					<ngx-charts-advanced-pie-chart
+					  *ngIf="visible"
+			          [view]="pieView"					  
+					  [scheme]="visitorsPieColorScheme"
+					  [results]="visitorsPieData"
+					  legend="true">
+					</ngx-charts-advanced-pie-chart>
+			</mat-card-content>
+	    </mat-card>
+	</div>
+	<div class="pie-content">
+	    <mat-card class="pie-card3">
+		    <mat-card-header>
+				  <span>Visits</span>
+			</mat-card-header>
+	        <mat-card-content class="pie-card3-content" layout-fill>
+			     <ngx-charts-pie-grid
+				  *ngIf="visible"
+				  minWidth="100"
+				  [scheme]="visitsPieColorScheme"
+				  [results]="visitsPieData">
+				</ngx-charts-pie-grid>
+			</mat-card-content>
+	    </mat-card>
+	    <mat-card class="pie-card3">
+		    <mat-card-header>
+				  Visitors
+			</mat-card-header>
+	        <mat-card-content class="pie-card3-content">
+				     <ngx-charts-pie-grid
+					  *ngIf="visible"
+				      minWidth="100"					  
+					  [scheme]="visitorsPieColorScheme"
+ 					  [results]="visitsPieData">
+					</ngx-charts-pie-grid>
+			</mat-card-content>
+	    </mat-card>
+	</div>
+	
+    <mat-card  class="bar-card">
+	    <mat-card-header>
+			  <span>Visit Duration</span>
+		</mat-card-header>
+	   <mat-card-content>
+			<ngx-charts-bar-vertical
+			  *ngIf="visible"
+			  [view]="view"
+			  [scheme]="barColorScheme"
+			  schemeType="ordinal"
+			  [results]="barData"
+			  roundDomains="true"
+			  gradient="false"
+			  xAxis="true"
+			  yAxis="true"
+			  showXAxisLabel="true"
+			  showYAxisLabel="true"
+			  xAxisLabel="Length of visit"
+			  yAxisLabel="Visitors"
+			  (select)="select($event)">
+			</ngx-charts-bar-vertical>
+	   </mat-card-content>
+	</mat-card>	
+    <mat-card >
+	    <mat-card-header>
+			  <span>Visit Duration</span>
+		</mat-card-header>
+	   <mat-card-content class="bar-card-no-g-size">
+			<ngx-charts-bar-vertical
+			  *ngIf="visible"
+			  [scheme]="barColorScheme"
+			  schemeType="ordinal"
+			  [results]="barData"
+			  roundDomains="true"
+			  gradient="false"
+			  xAxis="true"
+			  yAxis="true"
+			  showXAxisLabel="true"
+			  showYAxisLabel="true"
+			  xAxisLabel="Length of visit"
+			  yAxisLabel="Visitors"
+			  (select)="select($event)">
+			</ngx-charts-bar-vertical>
+	   </mat-card-content>
+	</mat-card>		
+    <mat-card>
+	    <mat-card-header >
+			  <span>Daily Visitors</span>
+		</mat-card-header>
+	   <mat-card-content>
+	     <div class="bar-card-no-g-size">
+			<ngx-charts-line-chart
+			  *ngIf="visible"
+			  [scheme]="lineColorScheme"
+			  schemeType="ordinal"
+			  [results]="testData"
+			  roundDomains="true"
+			  gradient="false"
+			  xAxis="true"
+			  yAxis="true"
+			  showXAxisLabel="true"
+			  showYAxisLabel="true"
+			  xAxisLabel="Time"
+			  yAxisLabel="Visitors"
+			  autoScale="false"
+			  timeline="false"
+			  showGridLines="true"
+			  (select)="select($event)">
+			</ngx-charts-line-chart>
+	      </div>
+	   </mat-card-content>
+	</mat-card>		
+    <mat-card class="line-card">
+	    <mat-card-header >
+			  <span>Daily Visitors</span>
+		</mat-card-header>
+	   <mat-card-content>
+	     <div class="line-card-content">
+			<ngx-charts-line-chart
+			  *ngIf="visible"
+			  [scheme]="lineColorScheme"
+			  schemeType="ordinal"
+			  [results]="testData"
+			  roundDomains="true"
+			  gradient="false"
+			  xAxis="true"
+			  yAxis="true"
+			  showXAxisLabel="true"
+			  showYAxisLabel="true"
+			  xAxisLabel="Time"
+			  yAxisLabel="Visitors"
+			  autoScale="false"
+			  timeline="false"
+			  showGridLines="true"
+			  (select)="select($event)">
+			</ngx-charts-line-chart>
+	      </div>
+	   </mat-card-content>
+	</mat-card>	
+    <mat-card class="line-card">
+	    <mat-card-header>
+			  <span>Visit Duration</span>
+		</mat-card-header>
+	   <mat-card-content class="line-card-content">
+			<ngx-charts-bar-vertical
+			  *ngIf="visible"
+			  [scheme]="barColorScheme"
+			  schemeType="ordinal"
+			  [results]="barData"
+			  roundDomains="true"
+			  gradient="false"
+			  xAxis="true"
+			  yAxis="true"
+			  showXAxisLabel="true"
+			  showYAxisLabel="true"
+			  xAxisLabel="Length of visit"
+			  yAxisLabel="Visitors"
+			  (select)="select($event)">
+			</ngx-charts-bar-vertical>
+	   </mat-card-content>
+	</mat-card>			
+</div>

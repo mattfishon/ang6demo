@@ -1,0 +1,48 @@
+<div class="tran-content">
+  <mat-card>
+    <mat-card-header>
+		  <span>
+			Security line wait time		  
+		  </span>
+	</mat-card-header>
+    <mat-card-content>
+	  <span>
+			<ngx-charts-gauge
+			  *ngIf="visible"
+			  [view]="view"
+			  [scheme]="pieColorScheme"
+			  [results]="securityStatsDataFeed$ | async"
+			  units="minutes">
+			</ngx-charts-gauge>	  
+	  </span>
+    </mat-card-content>
+    <mat-card-footer>
+	  <span *ngIf="visible">
+	      Passenger count: {{securityPassCountDataFeed$ | async}}
+	  </span>
+	</mat-card-footer>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+		  <span>
+			Total Transit time		  
+		  </span>
+	</mat-card-header>
+    <mat-card-content>
+	  <span>
+			<ngx-charts-gauge
+			  *ngIf="visible"
+			  [view]="view"
+			  [scheme]="pieColorScheme"
+			  [results]="transitStatsDataFeed$ | async"
+			  units="minutes">
+			</ngx-charts-gauge>	  
+	   </span>
+    </mat-card-content>	   
+	<mat-card-footer>
+		  <span *ngIf="visible"> 
+		      Passenger count: {{transitPassCountDataFeed$ | async}}
+		  </span>
+    </mat-card-footer>
+   </mat-card>
+</div>

@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+body{
+  font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+  text-align: center;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  letter-spacing: 0.01rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  margin:20px
+}
+
+.advanced-pie-legend .total-value {
+  font-size: 20px !important;
+}
+
+.advanced-pie-legend .total-label {
+    font-size: 14px !important;
+    margin-bottom: 5px !important;
+    line-height: 1em !important;
+}
+
+.advanced-pie-legend .legend-items-container .legend-items .legend-item .item-value {
+    font-size: 14px !important;
+    margin-left: 11px;
+    line-height: 1em !important;
+    margin-top: 0px !important;
+}
+
+.advanced-pie-legend .legend-items-container .legend-items .legend-item .item-label {
+    font-size: 12px !important;
+    opacity: 0.7;
+    margin-left: 11px;
+    margin-top: 0px !important;
+    line-height: 1em !important;
+}
+
+.advanced-pie-legend .legend-items-container .legend-items .legend-item .item-percent {
+    font-size: 14px !important;
+    opacity: 0.7;
+    margin-left: 11px;
+    line-height: 1em !important;
+}

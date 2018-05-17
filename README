@@ -1,0 +1,81 @@
+This project is at workspace:  
+
+I installed nodejs into C:/tools/
+
+When I ran:
+npm install @angular/cli
+I installed it locally at the project root folder...it created:
+C:\project root\node_modules\@angular
+
+Now following instrs below in section 5 only to hook angular into spring boot:
+https://www.djamware.com/post/5a792ecb80aca7059c142978/spring-boot-mongodb-and-angular-5-crud-java-web-application
+
+1) ng new frontend 
+This created a huge frontend directory (i.e Application)
+
+2) Modified outDir as specified
+NOTE: With Ang 6 it seems to be angular.json file
+
+3) cd to frontend and run  (install will install modules listed in package.json)
+npm install
+ng build
+
+The above now puts stuff in src/main/resources/static/
+
+Now used this link from beginning up to "The Resource Server" to get login working.
+https://spring.io/guides/tutorials/spring-security-and-angular-js/
+
+
+NOTE:  After changes in frontend/app I have been in dir /frontend  using command ng build   
+to regenerate files in my project static folder
+
+
+Install Angular Material via this:
+https://material.angular.io/guide/getting-started
+NOTE:  I did the install in my /frontend directory
+Step 1:  I did as is
+Step 2:  I skipped for now
+Step 4:  Added to the styles.css
+Step 5:  Skipped for now
+
+
+For Material I did:
+npm install --save @angular/material @angular/cdk hammerjs
+1) fixed output path
+2) update styles.css
+
+NGX-CHarts
+1) npm i --save @swimlane/ngx-charts
+2) npm install d3 --save
+2) npm i @types/d3 --save
+
+
+ 
+5) removed these 2 on bar and line to stop legend from showing
+			  class="chart-container"
+			  legend="false"
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+NOTE:  FIle not found below with verion 6 stuff.....
+"styles": [
+   "styles.css",
+   "../node_modules/@swimlane/ngx-charts/release/ngx-charts.css"
+],			  
+			  
+			  
+TODO:  
+1) /src/styles.css -   Add global ngx overrides as I can't get to work in component scss yet!
+2) /src/polyfill.ts - Uncomment stuff for IE to work and fix import of classlist to abs path
+2b)  fix import of classlist to use relative path directory location
+
+Had to install this after uncommenting polyfill stuff.
+npm i classlist --save 
+
+
+Investigate:
+1) app/browserslist for potential IE issues

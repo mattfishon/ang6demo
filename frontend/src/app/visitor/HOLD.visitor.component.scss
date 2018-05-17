@@ -1,0 +1,107 @@
+@import '../vars.scss';
+
+.number-font {
+  font-size: 2.5rem !important;
+}
+
+.list-container {
+    padding: 10px !important;
+    justify-content: center !important;
+}
+    
+.mat-grid-list {
+    justify-content: center !important;
+}
+
+.mat-grid-tile {
+    border-style: solid !important;
+    border-width: thin !important;
+
+    margin: 0 0 0 8px !important;
+    justify-content: center;
+}
+
+.mat-grid-tile-header {
+    background-color: mat-color($primaryPalette, lighter) !important;
+    padding: 5px !important;
+    justify-content: left;
+}
+
+.mat-card-header {
+    background-color: mat-color($primaryPalette, lighter) !important;
+    padding: 5px !important;
+    justify-content: left;
+}
+
+.mat-card {
+    padding: 0 !important;
+}
+
+.mat-card-content {
+    padding: 5px !important;
+}
+.tran-content {
+  padding: 1px 1rem;
+}
+.bar-card {
+  max-width: 750px;
+  min-height: 250px;
+  margin: 2em auto;
+  text-align: center;
+ }
+ .bar-card-no-g-size {
+  max-width: 750px !important;
+  min-height: 250px !important;
+  margin: 2em auto !important;
+ }
+.test-card {
+  max-width: 750px;
+  min-height: 700px;
+  margin: 2em auto;
+  text-align: center;
+ }
+.test1 {
+  margin: 1em auto;
+  text-align: center;
+}
+.line-card {
+  max-width: 750px;
+  margin: 2em auto;
+}
+.line-card-content {
+  min-height: 300px;
+}
+.pie-content {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 2px 1rem;
+}
+.pie-card {
+  max-width: 225px;
+  min-height: 100px;
+  margin: 1em auto;
+  text-align: center;
+}
+.pie-card2.this.look.good.chrome.not.ie {
+  max-width: 260px;
+  max-height: 200px;
+  margin: 1em auto;
+}
+.pie-card2 {
+  min-width: 260px;
+  max-width: 300px; 
+  min-height: 250px;
+  margin: 1em auto;
+}
+.pie-card2-content {
+  text-align: center;
+  margin: 0;
+}
+.pie-card3 {
+  max-width: 750px;
+  margin: 2em auto;
+}
+.pie-card3-content {
+  min-height: 250px;
+}
+
