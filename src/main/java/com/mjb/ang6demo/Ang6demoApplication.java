@@ -1,6 +1,7 @@
 package com.mjb.ang6demo;
 
 import java.security.Principal;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -14,6 +15,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +43,13 @@ public class Ang6demoApplication {
 	  public CurrentTransitMetrics transit() {
 		CurrentTransitMetrics msg = new CurrentTransitMetrics();
 
+	      User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	      if ( user instanceof SkyUser ) {
+		      System.out.println("site Id: " + ((SkyUser)user).getSiteId() );
+	      }
+	      String name = user.getUsername();
+	      System.out.println("user: " + name );
+		
 		Random r = new Random();
 		int me =  r.nextInt((100 - 1) + 1) + 1;
 		int me1 =  r.nextInt((100 - 1) + 1) + 1;
@@ -72,22 +83,24 @@ public class Ang6demoApplication {
 	  
 	    @Override
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	        auth.inMemoryAuthentication()
-	                .withUser("jfk1")
-	                    .password("jfk1")
-	                    .roles("USER")
-	            .and()
-	                .withUser("manager")
-	                    .password("password")
-	                    .credentialsExpired(true)
-	                    .accountExpired(true)
-	                    .accountLocked(true)
-	                    .authorities("WRITE_PRIVILEGES", "READ_PRIVILEGES")
-	                    .roles("MANAGER");
+	    	auth.userDetailsService(new SkyUserDetailsService());
+	        
+//	        auth.inMemoryAuthentication()
+//	                .withUser("jfk1")
+//	                    .password("jfk1")
+//	                    .roles("USER")
+//	            .and()
+//	                .withUser("manager")
+//	                    .password("password")
+//	                    .credentialsExpired(true)
+//	                    .accountExpired(true)
+//	                    .accountLocked(true)
+//	                    .authorities("WRITE_PRIVILEGES", "READ_PRIVILEGES")
+//	                    .roles("MANAGER");
 	    }
 	  
 	}
-
+	  
 	public static void main(String[] args) {
 		SpringApplication.run(Ang6demoApplication.class, args);
 	}
