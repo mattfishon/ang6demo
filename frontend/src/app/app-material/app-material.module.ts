@@ -6,6 +6,7 @@ import {
   MatInputModule,
   MatButtonModule
 } from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   imports: [CommonModule],
@@ -13,7 +14,8 @@ import {
     MatToolbarModule,
     MatCardModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ]
 })
 export class AppMaterialModule {}

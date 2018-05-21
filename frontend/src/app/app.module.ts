@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { TransitComponent } from './transit/transit.component';
 import { TransitService } from './transit/transit.service';
+import { VisitorService } from './visitor/visitor.service';
 import { VisitorComponent } from './visitor/visitor.component';
 
 
@@ -80,7 +81,7 @@ export class XhrInterceptor implements HttpInterceptor {
 	MatGridListModule,    
     NgxChartsModule
   ],
-  providers: [AuthGuard, AuthService, TransitService, AppService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [AuthGuard, AuthService, TransitService, VisitorService, AppService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

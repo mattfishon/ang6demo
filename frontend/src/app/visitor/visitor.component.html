@@ -1,4 +1,31 @@
 <div class="tran-content">
+
+	<div class="form-container">
+	    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+	    
+	        <mat-form-field class="form-stuff">
+    		   <mat-select [(value)]="selectedZone" placeholder="Select zone" >
+    				<mat-optgroup *ngFor="let group of zoneGroups" [label]="group.zoneName"
+                         [disabled]="group.disabled">    		   
+	    				<mat-option *ngFor="let zones of group.zones" [value]="zones.name">
+	      					{{zones.name}}
+    					</mat-option>
+	    		    </mat-optgroup>    		   
+    		    </mat-select>
+			</mat-form-field>
+  
+	        <mat-form-field class="form-stuff">
+    		   <mat-select [(value)]="selectedTime" placeholder="Select time period" >
+	    			<mat-option *ngFor="let time of times" [value]="time.name">
+	      					{{time.name}}
+	    			</mat-option>
+    		    </mat-select>
+			</mat-form-field>
+			  
+	       <button class="form-stuff" mat-raised-button color="primary" type="submit">Refresh</button>
+	    </form>
+	</div>
+
 	<div class="pie-content">
 	    <mat-card class="pie-card3">
 		    <mat-card-header>

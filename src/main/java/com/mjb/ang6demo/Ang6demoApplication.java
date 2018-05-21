@@ -1,8 +1,10 @@
 package com.mjb.ang6demo;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -37,6 +39,39 @@ public class Ang6demoApplication {
 	  @RequestMapping("/user")
 	  public Principal user(Principal user) {
 	    return user;
+	  }
+
+	  @RequestMapping("/zones")
+	  public ZoneGroups[] getZones() {
+		List<ZoneGroups> msg = new ArrayList<>();
+		
+		ZoneGroups grp = new ZoneGroups();
+		grp.setZoneName( "Zones" );
+		Zone z1 = new Zone();
+		z1.setName( "All" );
+		Zone z2 = new Zone();
+		z2.setName( "Gates" );
+		grp.addZone(z1);
+		grp.addZone(z2);
+		msg.add( grp );
+		
+		ZoneGroups grp2 = new ZoneGroups();
+		grp2.setZoneName( "Sensors" );
+		Zone s1 = new Zone();
+		s1.setName( "A1" );
+		Zone s2 = new Zone();
+		s2.setName( "D1" );
+		grp2.addZone(s1);
+		grp2.addZone(s2);
+		msg.add( grp2 );
+		
+
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if ( user instanceof SkyUser ) {
+		   //System.out.println("site Id: " + ((SkyUser)user).getSiteId() );
+	    }
+		
+	    return msg.toArray(new ZoneGroups[msg.size()]);
 	  }
 
 	  @RequestMapping("/transitMetrics")

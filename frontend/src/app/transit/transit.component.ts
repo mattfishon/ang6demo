@@ -72,9 +72,6 @@ export class TransitComponent implements OnInit {
       this.transitStatsDataFeed$ = this.transitStatsSubject.asObservable();
       this.transitPassCountDataFeed$ = this.transitPassCountSubject.asObservable();
 
-		interval(30000);
-    
-
       this.pollingData =
          timer(0,30000).pipe(
 	     flatMap( () => this.transitService.getConfig() ) )

@@ -1,10 +1,15 @@
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { colorSets as ngxChartsColorsets } from '@swimlane/ngx-charts/release/utils/color-sets';
 import {MatGridListModule} from '@angular/material/grid-list';
+
+import { VisitorService } from './visitor.service';
+import { AllZones } from './AllZones';
+import { Zones } from './zones';
 
 //import d3 from '@swimlane/ngx-charts/release/d3';
 
@@ -15,6 +20,36 @@ import {MatGridListModule} from '@angular/material/grid-list';
 })
 export class VisitorComponent implements OnInit {
 
+  // Error from Rest call (not much to do with on client)  
+  error: any;
+  
+  form: FormGroup;
+  private formSubmitAttempt: boolean;
+  errorMsg$: Observable<boolean>;
+  
+  zoneGroups : Zones[] = [];
+  
+  selectedZone = 'All';
+  /*
+  zoneGroups = 
+     [ { zoneName :'Zone', 
+            zones : [ {name: 'All', value: ''}, {name: 'Gate area', value: ''} ] 
+       },
+       { zoneName :'Sensor', 
+            zones  : [ {name: 'E1', value: ''}, {name: 'C1', value: ''} ] 
+       }            
+     ]; 
+  */
+
+  selectedTime = 'Today';
+  times = [
+    {name: 'Today', value: ''},
+    {name: 'Yesterday', value: ''},
+    {name: 'Last 7 days', value: ''},
+    {name: 'Last 30 days', value: ''},
+  ];
+
+  
   pieView = [230, 210];
   visitsPieData: any;
   visitsPieColorScheme: any;
@@ -36,9 +71,14 @@ export class VisitorComponent implements OnInit {
 
   public visible :boolean = false;
       
-  constructor(private authService: AuthService) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private visitorService: VisitorService) {
+  }
 
   ngOnInit() {
+     this.form = this.fb.group({});
+      
+     this.populateZones();
+    
      this.setColorScheme('cool');
 
      this.visitsPieData = [{"name": "First Time","value": 632},{"name": "Repeats","value": 1040}];
@@ -107,6 +147,40 @@ export class VisitorComponent implements OnInit {
 
   ngOnDestroy() {
      //this.pollingData.unsubscribe();
+  }
+  
+  populateZones() {
+  
+	  this.visitorService.getZones()
+	      .subscribe(
+	         (data: Zones[] ) => {
+	          this.zoneGroups = data;
+	          
+	          //console.log( 'Data is: ' );
+	          //console.log( data );
+	          	          
+	          //this.securityStatsSubject.next( this.secStats );
+	          //this.securityPassCountSubject.next( data.security5MinCount );
+	          
+	          //Remove array item
+	          //this.secStats.splice(1,1);
+	          
+	          this.visible = true;
+	        },
+	        error => this.error = error // error path
+	       );  
+  }
+  
+  onSubmit() {
+    console.error('Sel: ');
+    console.error(this.selectedZone);
+    console.error('Sel: ');
+    console.error(this.selectedTime);
+        
+    if (this.form.valid) {
+      //this.authService.login(this.form.value);
+    }
+    this.formSubmitAttempt = true;
   }
   
   setColorScheme(name) {

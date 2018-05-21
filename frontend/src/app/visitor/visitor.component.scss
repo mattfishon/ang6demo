@@ -1,5 +1,20 @@
 @import '../vars.scss';
 
+.form-container {
+  display: flex;
+  flex-direction: row;
+  margin: 2px 75px 2px 75px;
+  background-color: mat-color($primaryPalette, lighter) !important;
+}
+
+.form-container > * {
+  width: 100%;
+}
+
+.form-stuff  {
+ padding: 2px 20px 0px 20px;
+}
+
 .number-font {
   font-size: 2.5rem !important;
 }
