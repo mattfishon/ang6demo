@@ -74,6 +74,26 @@ public class Ang6demoApplication {
 	    return msg.toArray(new ZoneGroups[msg.size()]);
 	  }
 
+	  @RequestMapping("/visitorLineOfDaily")
+	  public ChartSeries[] visitorLineOfDaily() {
+			List<ChartSeries> msg = new ArrayList<>();
+			
+			ChartSeries s1 = new ChartSeries();
+			s1.setName("");
+			
+			ChartDetail d1 = new ChartDetail();
+			d1.setName("9:00 AM");
+			d1.setValue(50);
+			s1.addSeries(d1);
+
+			ChartDetail d2 = new ChartDetail();
+			d2.setName("10:00 AM");
+			d2.setValue(75);
+			s1.addSeries(d2);
+			
+		    return msg.toArray(new ChartSeries[msg.size()]);
+	  }
+	  
 	  @RequestMapping("/transitMetrics")
 	  public CurrentTransitMetrics transit() {
 		CurrentTransitMetrics msg = new CurrentTransitMetrics();

@@ -10,6 +10,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { VisitorService } from './visitor.service';
 import { AllZones } from './AllZones';
 import { Zones } from './zones';
+import { ChartSeries } from './chartSeries';
+
 
 //import d3 from '@swimlane/ngx-charts/release/d3';
 
@@ -60,6 +62,9 @@ export class VisitorComponent implements OnInit {
   lineData: any;
   lineColorScheme: any;
   selectedColorScheme: string;
+
+  lineChartSeries : ChartSeries[] = [];
+
 
   barData: any;
   barColorScheme: any;
@@ -127,7 +132,8 @@ export class VisitorComponent implements OnInit {
 		      ]
 		  }];
 
-     this.testData = [
+//     this.testData = [
+        this.lineChartSeries = [
 		  {
 		    "name": "",
 		    "series": [
@@ -170,12 +176,36 @@ export class VisitorComponent implements OnInit {
 	        error => this.error = error // error path
 	       );  
   }
+
+  populateLineChart() {
+  
+	  this.visitorService.getLineChart()
+	      .subscribe(
+	         (data: ChartSeries[] ) => {
+	          this.lineChartSeries = data;
+	          
+	          //console.log( 'Data is: ' );
+	          //console.log( data );
+	          	          
+	          //this.securityStatsSubject.next( this.secStats );
+	          //this.securityPassCountSubject.next( data.security5MinCount );
+	          
+	          //Remove array item
+	          //this.secStats.splice(1,1);
+	          
+	        },
+	        error => this.error = error // error path
+	       );  
+  }
   
   onSubmit() {
     console.error('Sel: ');
     console.error(this.selectedZone);
     console.error('Sel: ');
     console.error(this.selectedTime);
+      
+    //Need to change array to Observable and async in html  
+    //this.populateLineChart();
         
     if (this.form.valid) {
       //this.authService.login(this.form.value);

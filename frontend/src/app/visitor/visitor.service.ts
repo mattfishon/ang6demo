@@ -1,9 +1,10 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 import { Zones } from './zones';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { ChartSeries } from './chartSeries';
 
 //import { throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
@@ -16,6 +17,16 @@ export class VisitorService {
 
   getZones() : Observable<Zones[]>  {
     return this.http.get<Zones[]>('/zones')
+      .pipe(
+        retry(3) // retry a failed request up to 3 times
+      );
+      
+     // Was not compling .... fix this
+     // .catchError(this.handleError) // then handle the error      
+  }
+
+  getLineChart() : Observable<ChartSeries[]>  {
+    return this.http.get<ChartSeries[]>('/visitorLineOfDaily')
       .pipe(
         retry(3) // retry a failed request up to 3 times
       );
