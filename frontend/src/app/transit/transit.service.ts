@@ -42,35 +42,4 @@ export class TransitService {
   };
   */
 
-
-
-/*
-research below to see if needed.
-
-    private dataSubject: BehaviorSubject<Message> = new BehaviorSubject([]);
-
-    data$: Observable<Message> = this.dataSubject.asObservable();
-*/
-    //updateData(): Observable<any>  {
-/*    
-    updateData(): Observable<Message>  {    
-        return this.getData().do((data) => {
-            this.dataSubject.next(data);
-        });
-    }
-*/    
-    // My data is an array of model objects
-/*    
-    getData(): Observable<Message>{
-        return this.http.get('/transit')
-            .map((response: Response) => {
-                let data = response.json();
-                //let data = response.json() && response.json().your_data_objects;
-                if(data){
-                    return data;
-                }
-            })
-    }
-*/    
-
 }

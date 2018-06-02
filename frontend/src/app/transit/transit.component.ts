@@ -140,59 +140,5 @@ export class TransitComponent implements OnInit {
     this.selectedColorScheme = name;
     this.pieColorScheme = ngxChartsColorsets.find(s => s.name === name);
   }  
-  
-/*
-
-need to research this further to see if it is needed.
-
-	private unsubscribe: Subject = new Subject<void>();
-    data: any;
-    interval: any;
-
-  constructor(private authService: AuthService, private transitService: TransitService) {}
-
-    ngOnInit() {
-      	//this.mess.security5MinMean = 45;
-  		//this.mess.security5MinPeople = 5; 
-    
-    
-        this.refreshData();
-        if(this.interval){
-            clearInterval(this.interval);
-        }
-        this.interval = setInterval(() => {
-            this.refreshData();
-        }, 5000);
-
-
-        this.transitService.data$.takeUntil(this.unsubscribe)
-            .subscribe(data => {
-                this.data = data;
-            });
-
-    }
-
-    ngOnDestroy() {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    }
-
-    refreshData(){
-        this.transitService.updateData()
-            .takeUntil(this.unsubscribe)
-            .subscribe();
-    }
-
-    doAction(){
-        this.subscription.add(
-            this.transitService.doAction()
-                .subscribe(result => {
-                    if(result === true){
-                        this.refreshData();
-                    }
-                })
-        );
-    }
-*/
     
 }

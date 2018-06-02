@@ -32,7 +32,7 @@ export class VisitorComponent implements OnInit {
   zoneGroups : Zones[] = [];
   
   selectedZone = 'All';
-  /*
+  /*  Mock data for prototype.  This will need to be derived from Site collection.
   zoneGroups = 
      [ { zoneName :'Zone', 
             zones : [ {name: 'All', value: ''}, {name: 'Gate area', value: ''} ] 
